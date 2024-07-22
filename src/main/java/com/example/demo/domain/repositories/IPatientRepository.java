@@ -8,12 +8,4 @@ import org.springframework.data.repository.query.Param;
 
 public interface IPatientRepository extends JpaRepository<Patient, Long> {
 
-    @Modifying
-    @Query("UPDATE Patient e SET e.name = :newName, e.lastName = :newLastName, e.email = :newEmail WHERE e.id = :id")
-    void updatePatient(
-            @Param("id") Long id,
-            @Param("newName") String newName,
-            @Param("newLastName") String newLastName,
-            @Param("newEmail") String newEmail
-    );
 }

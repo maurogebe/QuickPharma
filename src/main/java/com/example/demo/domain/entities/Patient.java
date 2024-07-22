@@ -20,10 +20,13 @@ public class Patient {
     @Column(name="last_name")
     private String lastName;
     private String email;
+
     @Column(name="health_insurance_number")
     private String healthInsuranceNumber;
+
     @Column(name="birth_date")
     private LocalDate birthDate;
-    @OneToMany
+
+    @OneToMany(targetEntity = Allergy.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Allergy> allergies;
 }

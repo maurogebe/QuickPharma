@@ -1,10 +1,14 @@
 package com.example.demo.infrastructure.controllers;
 
+import com.example.demo.application.usecases.IPatientUsecase;
+import com.example.demo.domain.dtos.PatientRequestDTO;
 import com.example.demo.domain.dtos.PatientResponseDTO;
+import com.example.demo.domain.dtos.PatientUpdateRequestDTO;
 import com.example.demo.domain.entities.Patient;
-import com.example.demo.domain.service.PatientService;
+import com.example.demo.application.usecases.PatientUsecase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,32 +18,37 @@ import java.util.List;
 @RequestMapping("/patients")
 public class PatientController {
 
-    private PatientService patientService;
+    private final IPatientUsecase patientUsecase;
 
     @Autowired
-    public PatientController(PatientService patientService){
-        this.patientService = patientService;
+    public PatientController(PatientUsecase patientUsecase){
+        this.patientUsecase = patientUsecase;
     }
 
     @PostMapping
-    public ResponseEntity<String> createPatient(@RequestBody Patient patient){
-        patientService.createPatient(patient);
-        return ResponseEntity.ok("Registro de paciente exitoso.");
+    public ResponseEntity<PatientResponseDTO> createPatient(@RequestBody PatientRequestDTO patientRequestDTO){
+        return ResponseEntity.status(HttpStatus.CREATED).body(patientUsecase.createPatient(patientRequestDTO));
     }
 
     @GetMapping
-    public List<Patient> getAllPatients(){
-        return patientService.getPatients();
+    public ResponseEntity<List<PatientResponseDTO>> getAllPatients(){
+        return ResponseEntity.status(HttpStatus.OK).body(patientUsecase.findAll());
     }
 
     @GetMapping("/{id}")
-    public Patient getPatient(@PathVariable("id") Long id){
-        return patientService.printPatient(id);
+    public ResponseEntity<PatientResponseDTO> searchPatient(@PathVariable("id") Long id){
+        return ResponseEntity.status(HttpStatus.OK).body(patientUsecase.findById(id));
     }
 
     @PutMapping
-    public ResponseEntity<String> updatePatient(@PathVariable("id") Long id, @RequestParam String newName, @RequestParam String newLastName, @RequestParam String newEmail){
-        patientService.updatePatient(id, newName, newLastName, newEmail);
-        return ResponseEntity.ok("El paciente con ID: " + id + " ha sido actualizado.");
+    public ResponseEntity<PatientResponseDTO> updatePatient(@RequestBody PatientUpdateRequestDTO patientUpdateRequestDTO){
+        return ResponseEntity.status(HttpStatus.OK).body(patientUsecase.updatePatient(patientUpdateRequestDTO));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePatient(@PathVariable("id") Long id) {
+        patientUsecase.findById(id);
+        patientUsecase.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

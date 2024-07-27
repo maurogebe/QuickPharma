@@ -29,8 +29,8 @@ public class MedicamentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<MedicamentDTO>> getMedicaments(){
-        return ResponseEntity.status(HttpStatus.OK).body(medicamentUsecase.getMedicaments());
+    public ResponseEntity<List<MedicamentDTO>> getMedicaments(@RequestParam(required = false) String name){
+        return ResponseEntity.status(HttpStatus.OK).body(medicamentUsecase.getMedicaments(name));
     }
 
     @GetMapping("/{id}")

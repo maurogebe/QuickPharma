@@ -81,43 +81,43 @@ jjwt-api, jjwt-impl, jjwt-jackson: Bibliotecas para la generación y validación
 
 - Creación, actualización, visualización y búsqueda de perfiles de pacientes.
 - Atributos: ID, Nombre, Fecha de Nacimiento, Alergias, Número de Seguro Médico.
-- 
+  
 #### Gestión de Medicamentos: 💊 - :pill:
 
 - Creación, actualización, visualización y búsqueda de medicamentos.
 - Atributos: ID, Nombre, Forma, Prescripción Requerida, Stock, Costo.
-- 
+  
 #### Gestión de Recetas Médicas: 📑 - :bookmark_tabs:
 
 Procesamiento de recetas mediante OCR desde archivos de imagen o PDF.
 - Atributos: ID de Receta, ID de Paciente, Medicamentos, Cantidades, Instrucciones, Médico, Fecha de Emisión.
-- 
+  
 #### Gestión de Ventas: 🛒 - :shopping_cart:
 
 - Registro de ventas con detalles completos.
 - Generación de boletas de venta en PDF y envío automático al cliente.
-- 
+  
 #### Problemas Solucionados: ✅ - :white_check_mark:
 
 #### Gestión de Información Compleja: 📊 - :bar_chart:
 
-Análisis detallado de datos médicos y de ventas para ayudar en la toma de decisiones informadas.
+- Análisis detallado de datos médicos y de ventas para ayudar en la toma de decisiones informadas.
 
 #### Procesamiento de Recetas: 📋 - :clipboard:
 
-Uso de tecnología OCR para una conversión precisa de recetas escritas a texto digital, mejorando la eficiencia.
+- Uso de tecnología OCR para una conversión precisa de recetas escritas a texto digital, mejorando la eficiencia.
 
 #### Información de Medicamentos: 📚 - :books:
 
-Provisión de descripciones comprensibles y modos de uso de medicamentos para pacientes y profesionales.
+- Provisión de descripciones comprensibles y modos de uso de medicamentos para pacientes y profesionales.
 
 #### Experiencia del Cliente: 🏆 - :trophy:
 
-Interfaz de usuario intuitiva que garantiza una experiencia fluida para empleados y clientes, mejorando la satisfacción del cliente.
+- Interfaz de usuario intuitiva que garantiza una experiencia fluida para empleados y clientes, mejorando la satisfacción del cliente.
 
 #### Escalabilidad y Seguridad: 🔒 - :lock:
 
-Arquitectura diseñada para soportar un crecimiento constante con estrictas medidas de seguridad para proteger datos sensibles.
+- Arquitectura diseñada para soportar un crecimiento constante con estrictas medidas de seguridad para proteger datos sensibles.
 
 #### Conclusiones: 📈 - :chart_with_upwards_trend:
 
